@@ -33,3 +33,17 @@ Project facts (features, versions, download names, supported versions) are taken
 ## Reporting a problem
 
 Use <https://github.com/OpenEdge-Labs/website/security/advisories/new> for security problems and the issue tracker for everything else.
+
+## Checks (measured 2026-11-10)
+
+CI (`.github/workflows/checks.yml`) runs the first two on every push.
+
+| Check | Tool | Result |
+|---|---|---|
+| HTML, CSS and SVG validation | Nu validator, `ghcr.io/validator/validator:latest` (`vnu`) | 0 errors, 0 warnings on all pages, `site.css` and the SVGs. A deliberately broken file is reported, so the check does detect errors. |
+| Links and fragments | lychee (Docker), local files plus external links | all links resolve except one: GitHub answered HTTP 500 for the unauthenticated download of `wedge-0.2.0-x86_64-unknown-linux-musl.tar.gz` (the same file downloads fine with `gh release download` and matches `SHA256SUMS`). `openelabs.*` URLs are skipped until the domains are live. |
+| No inline script or style, no third-party requests | grep in CI | none found |
+| Lighthouse 12 (local Chrome, no `_headers`) | Accessibility, Best Practices, SEO, mobile and desktop presets, 8 pages | 100 / 100 / 100 on every page run |
+| Manual look, light and dark theme | Chrome headless screenshots | dark and light render correctly; at 360 px wide the layout wraps without page-wide horizontal scrolling (wide tables scroll inside their own box); desktop 1280 px checked |
+
+Not yet checked: the response headers (`_headers` is only applied by Cloudflare Pages), HTTP Observatory and SSL Labs. These belong to the deployment step.

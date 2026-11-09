@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) OpenEdge Labs
+name: checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  html:
+    name: HTML validation (Nu validator)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate HTML, CSS and SVG
+        run: |
+          docker run --rm -v "$PWD:/site:ro" ghcr.io/validator/validator:latest \
+            vnu --also-check-css --also-check-svg --skip-non-css --skip-non-svg --skip-non-html /site
+  links:
+    name: Link check (lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links and fragments
+        run: |
+          # openelabs.* is skipped until the domains are live (canonical and sitemap URLs).
+          docker run --rm -v "$PWD:/site:ro" lycheeverse/lychee:latest \
+            --root-dir /site --include-fragments --accept 200,429 --max-retries 3 --no-progress \
+            --exclude '^https://openelabs\.(com|in|online)' \
+            /site/index.html '/site/*/index.html' '/site/projects/*/index.html' /site/404.html
+  policy:
+    name: No inline code, no third-party requests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check pages
+        run: |
+          ! grep -R -n -i -E '<script|<style| style=| on[a-z]+=' --include='*.html' .
+          ! grep -R -n -E '(src|href)="https?://' --include='*.html' . | grep -v 'rel="canonical"' | grep -E '<(script|link|img|iframe|source)'

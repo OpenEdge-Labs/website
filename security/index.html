@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Copyright (c) OpenEdge Labs -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security | OpenEdge Labs</title>
+<meta name="description" content="How to report a security vulnerability in OpenEdge Labs projects and which versions get fixes.">
+<link rel="canonical" href="https://openelabs.com/security/">
+<link rel="icon" href="/assets/openedge-labs-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site">
+<div class="wrap">
+<a class="brand" href="/"><img src="/assets/openedge-labs-mark.svg" alt="" width="36" height="36"><span>OpenEdge Labs</span></a>
+<nav class="main" aria-label="Main">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/projects/">Projects</a></li>
+<li><a href="/get-involved/">Get involved</a></li>
+<li><a href="/security/" aria-current="page">Security</a></li>
+<li><a href="/news/">News</a></li>
+<li><a href="/about/">About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="content" class="wrap">
+<h1>Security</h1>
+<h2>Reporting a vulnerability</h2>
+<p>Report problems privately. Please do not open a public issue or pull request for a suspected vulnerability.</p>
+<ul>
+<li><strong>wEdge</strong>: use <a href="https://github.com/OpenEdge-Labs/wedge/security/advisories/new">GitHub private vulnerability reporting</a> (the repository's Security tab). The <a href="https://github.com/OpenEdge-Labs/wedge/blob/main/SECURITY.md">security policy</a> promises an acknowledgement within 7 days, an assessment within 14 days, and a fix or mitigation as soon as practical. Include the version, operating system, relevant configuration with secrets removed, reproduction steps and the impact. The project aims to disclose within 90 days or less.</li>
+<li><strong>APIEdge</strong>: its <a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/SECURITY.md">security document</a> says to report vulnerabilities privately to the OpenEdge Labs maintainers and not through public issues. It does not yet name a private channel, and GitHub private reporting was not turned on for that repository when checked on 9 November 2026. Until that is fixed, open a public issue that says only that you have a security report and asks for a private contact, without any detail.</li>
+<li><strong>This website</strong>: <a href="https://github.com/OpenEdge-Labs/website/security/advisories/new">private vulnerability reporting</a>. See also <a href="/.well-known/security.txt">security.txt</a>.</li>
+</ul>
+<h2>Supported versions</h2>
+<p>From the wEdge security policy:</p>
+<div class="table-wrap">
+<table>
+<caption>wEdge security fixes</caption>
+<thead><tr><th scope="col">Version</th><th scope="col">Security fixes</th></tr></thead>
+<tbody>
+<tr><td>0.2.x</td><td>Yes</td></tr>
+<tr><td>0.1.x</td><td>No</td></tr>
+</tbody>
+</table>
+</div>
+<p>Until 1.0, only the latest 0.x release of wEdge receives fixes. APIEdge has no release yet, so no supported-version policy applies.</p>
+<h2>No guarantees</h2>
+<p>Each project describes its own checks (for example scanners, tests and fuzzing) in its repository. No software is free of vulnerabilities; checks reduce risk, they do not remove it.</p>
+</main>
+<footer class="site">
+<div class="wrap">
+<ul>
+<li><a href="https://github.com/OpenEdge-Labs">GitHub organisation</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/wedge">wEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge">APIEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/website">Source of this site</a></li>
+<li><a href="/.well-known/security.txt">security.txt</a></li>
+</ul>
+<p>Copyright &copy; OpenEdge Labs. Project software is released under the Apache License 2.0. This site's source is Apache-2.0 too.</p>
+<p>OpenEdge Labs is an independent community and is not affiliated with any other organisation. This site sets no cookies, runs no analytics and loads nothing from other sites.</p>
+</div>
+</footer>
+</body>
+</html>

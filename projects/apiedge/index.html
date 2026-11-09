@@ -1,0 +1,106 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Copyright (c) OpenEdge Labs -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APIEdge API gateway (early development) | OpenEdge Labs</title>
+<meta name="description" content="APIEdge is an on-premise, multi-tenant API gateway with a no-code and low-code console. Early development; no full release yet.">
+<link rel="canonical" href="https://openelabs.com/projects/apiedge/">
+<link rel="icon" href="/assets/openedge-labs-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site">
+<div class="wrap">
+<a class="brand" href="/"><img src="/assets/openedge-labs-mark.svg" alt="" width="36" height="36"><span>OpenEdge Labs</span></a>
+<nav class="main" aria-label="Main">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/projects/" aria-current="page">Projects</a></li>
+<li><a href="/get-involved/">Get involved</a></li>
+<li><a href="/security/">Security</a></li>
+<li><a href="/news/">News</a></li>
+<li><a href="/about/">About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="content" class="wrap">
+<h1><span class="textmark">API<span>Edge</span></span></h1>
+<p class="lead">An on-premise, multi-tenant API gateway with a web console for designing, securing, publishing, debugging and monitoring APIs, using no-code and low-code tools. Python and FastAPI, Apache-2.0.</p>
+<div class="notice"><p><strong>Early development.</strong> APIEdge's README describes 0.1 pre-releases. As of 9 November 2026 the GitHub releases page lists no release or pre-release, and the repository has no tags, so install from source. Expect changes, and do not treat it as production-ready.</p></div>
+<p><a class="button" href="https://github.com/OpenEdge-Labs/APIEdge">Source on GitHub</a><a class="button secondary" href="https://github.com/OpenEdge-Labs/APIEdge/releases">Releases</a><a class="button secondary" href="https://github.com/OpenEdge-Labs/APIEdge/issues">Issues</a></p>
+
+<h2>Available now</h2>
+<p>As listed in the project README:</p>
+<ul>
+<li><strong>Gateway runtime</strong>: per-tenant routing, weighted load balancing, timeouts and retries, verified TLS to upstreams, SSRF guard at connect time, lifecycle enforcement, hot reload.</li>
+<li><strong>Products, APIs, routes and policies</strong>, with lifecycle management and no-code form editors.</li>
+<li><strong>Policies</strong>: API key, JWT validation, rate limits and quotas, transforms, CORS, IP allow and deny, response cache, mock responses.</li>
+<li><strong>Packet inspector</strong>: opt-in captures, policy-by-policy traces, live view, masking, HAR export, replay.</li>
+<li><strong>Analytics</strong>: traffic, latency and error dashboards, CSV export, Prometheus metrics.</li>
+<li><strong>Security</strong>: role-based access control on every admin route, tenant isolation in the data layer, TOTP multi-factor sign-in, audit log. The project says it is designed against the OWASP Top 10, the OWASP API Security Top 10 and ASVS level 2; that is a design goal, not a certification.</li>
+<li><strong>Runs on</strong> Windows, Linux and macOS, with one-click installers, pip, Docker or Compose, and Helm.</li>
+</ul>
+
+<h2>Upcoming <span class="badge">Not available yet</span></h2>
+<ul>
+<li>Drag-and-drop policy flow builder</li>
+<li>Sandboxed Python script policies</li>
+<li>OpenAPI import and export</li>
+<li>Plans and consumers</li>
+<li>Developer portal</li>
+<li>Enterprise capabilities listed in the <a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/FEATURE_MATRIX.md">feature parity matrix</a></li>
+</ul>
+
+<h2>Quick start</h2>
+<p>You need Python 3.11, 3.12 or 3.13. The installer downloads other packages from PyPI and checks each file against pinned sha256 hashes. Node.js is not needed.</p>
+<pre><code>git clone https://github.com/OpenEdge-Labs/APIEdge.git
+cd APIEdge</code></pre>
+<div class="table-wrap">
+<table>
+<caption>Start the installer</caption>
+<thead><tr><th scope="col">Windows</th><th scope="col">macOS</th><th scope="col">Linux</th></tr></thead>
+<tbody><tr><td>double-click <code>install.bat</code></td><td>double-click <code>install.command</code></td><td>run <code>./install.sh</code></td></tr></tbody>
+</table>
+</div>
+<p>The installer creates a virtual environment and the database, asks for the first admin password (or generates one and shows it once), then starts APIEdge and opens the console at <code>http://localhost:8080/</code>. Run it again to upgrade or repair.</p>
+
+<h2>Other ways to run it</h2>
+<ul>
+<li><strong>pip wheel</strong>: shipped with releases as <code>apiedge-&lt;version&gt;-py3-none-any.whl</code>. No release exists yet.</li>
+<li><strong>Docker and Compose</strong>: multi-arch image definition in the repository. The installation guide states that no image is published to a registry yet, so build it from source.</li>
+<li><strong>Helm</strong>: chart in <code>packaging/helm/apiedge</code> of the repository.</li>
+</ul>
+<p>Steps for each are in the <a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/installation.md">installation guide</a>.</p>
+
+<h2>Verifying releases</h2>
+<p>There is no release to verify yet. The installation guide says each release will contain <code>SHA256SUMS</code> (and <code>SHA256SUMS.asc</code> when signed) and a CycloneDX software bill of materials, <code>apiedge-&lt;version&gt;.cdx.json</code>. See section 12 of the <a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/installation.md">installation guide</a>.</p>
+
+<h2>Documentation and source</h2>
+<ul>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/index.md">Documentation home</a>, <a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/installation.md">installation guide</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/SECURITY.md">Security and OWASP mapping</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/CHANGELOG.md">Changelog</a>, <a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/docs/FEATURE_MATRIX.md">feature parity matrix</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge">Source code</a>, <a href="https://github.com/OpenEdge-Labs/APIEdge/releases">releases</a>, <a href="https://github.com/OpenEdge-Labs/APIEdge/issues">issues</a></li>
+</ul>
+<p>Licence: <a href="https://github.com/OpenEdge-Labs/APIEdge/blob/main/LICENSE">Apache License 2.0</a>.</p>
+</main>
+<footer class="site">
+<div class="wrap">
+<ul>
+<li><a href="https://github.com/OpenEdge-Labs">GitHub organisation</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/wedge">wEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge">APIEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/website">Source of this site</a></li>
+<li><a href="/.well-known/security.txt">security.txt</a></li>
+</ul>
+<p>Copyright &copy; OpenEdge Labs. Project software is released under the Apache License 2.0. This site's source is Apache-2.0 too.</p>
+<p>OpenEdge Labs is an independent community and is not affiliated with any other organisation. This site sets no cookies, runs no analytics and loads nothing from other sites.</p>
+</div>
+</footer>
+</body>
+</html>

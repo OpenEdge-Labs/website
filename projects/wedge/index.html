@@ -1,0 +1,134 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Copyright (c) OpenEdge Labs -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wEdge web and application server | OpenEdge Labs</title>
+<meta name="description" content="wEdge is a web and application server written in Rust: static sites, TLS, reverse proxy and metrics. Downloads, verification and documentation.">
+<link rel="canonical" href="https://openelabs.com/projects/wedge/">
+<link rel="icon" href="/assets/openedge-labs-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site">
+<div class="wrap">
+<a class="brand" href="/"><img src="/assets/openedge-labs-mark.svg" alt="" width="36" height="36"><span>OpenEdge Labs</span></a>
+<nav class="main" aria-label="Main">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/projects/" aria-current="page">Projects</a></li>
+<li><a href="/get-involved/">Get involved</a></li>
+<li><a href="/security/">Security</a></li>
+<li><a href="/news/">News</a></li>
+<li><a href="/about/">About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="content" class="wrap">
+<h1><img src="/assets/wedge-icon.svg" alt="" width="48" height="48"> wEdge</h1>
+<p class="lead">A web and application server in Rust: static sites, TLS, reverse proxy and metrics in one memory-safe binary, with safe defaults.</p>
+<p>Latest release: <strong>v0.2.0</strong> (3 November 2026). Licence: Apache-2.0.</p>
+<p><a class="button" href="https://github.com/OpenEdge-Labs/wedge/releases/tag/v0.2.0">Release v0.2.0</a><a class="button secondary" href="https://github.com/OpenEdge-Labs/wedge">Source on GitHub</a><a class="button secondary" href="https://github.com/OpenEdge-Labs/wedge/issues">Issues</a></p>
+
+<h2>Features</h2>
+<ul>
+<li><strong>HTTP/1.1 and HTTP/2</strong>, with limits on headers, URIs, connections and every timeout.</li>
+<li><strong>Static files</strong>: virtual hosts, ETag and Last-Modified, byte ranges, pre-compressed Brotli and gzip, path traversal protection, no directory listing.</li>
+<li><strong>TLS</strong> with rustls: a certificate per virtual host by SNI, TLS 1.2 and later only, HSTS, HTTP to HTTPS redirects, security headers.</li>
+<li><strong>Reverse proxy</strong>: round-robin upstreams with health checks, safe forwarding headers, body limits, timeouts.</li>
+<li><strong>Operations</strong>: access and error logs (text or JSON), Prometheus metrics, hot configuration reload, systemd, OpenRC and Windows service.</li>
+<li><strong>Configuration</strong>: one <code>wedge.toml</code> plus <code>conf.d/</code>, validated against a JSON Schema before use; secrets only by reference (<code>env:</code> or <code>file:</code>).</li>
+<li><strong>Debug capture</strong>: an opt-in log of every request at each layer.</li>
+</ul>
+<p>Version 0.2.0 adds a new Windows installer and an admin status page with administrator logins; see <a href="/news/">the release news</a>.</p>
+
+<h2>Quick start</h2>
+<pre><code>mkdir -p site &amp;&amp; echo '&lt;h1&gt;Hello&lt;/h1&gt;' &gt; site/index.html
+cat &gt; wedge.toml &lt;&lt;'EOT'
+[server]
+listen = ["127.0.0.1:8080"]
+default_vhost = "site"
+
+[[vhost]]
+name = "site"
+root = "site"
+EOT
+wedge run -c wedge.toml</code></pre>
+
+<h2>Platforms</h2>
+<p>Status below is the project's own, from its <a href="https://github.com/OpenEdge-Labs/wedge/blob/main/docs/install/README.md">install guides</a> (checked 9 November 2026).</p>
+<div class="table-wrap">
+<table>
+<caption>Install guide status</caption>
+<thead><tr><th scope="col">Platform</th><th scope="col">Status</th></tr></thead>
+<tbody>
+<tr><td>Debian 12</td><td>Tested</td></tr>
+<tr><td>Ubuntu 24.04 LTS</td><td>Tested</td></tr>
+<tr><td>Kali Linux (rolling)</td><td>Tested</td></tr>
+<tr><td>Fedora 40</td><td>Tested</td></tr>
+<tr><td>RHEL 9 and compatible (Rocky Linux, AlmaLinux)</td><td>Tested</td></tr>
+<tr><td>Alpine Linux 3.20</td><td>Tested</td></tr>
+<tr><td>Windows 10/11 and Windows Server (x86_64)</td><td>Tested on a Windows 11 desktop and in CI</td></tr>
+<tr><td>macOS (Apple silicon and Intel)</td><td><strong>Untested</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p>Other Linux distributions can use the static musl tarball and follow the Alpine guide.</p>
+
+<h2>Downloads (v0.2.0)</h2>
+<p>All files come from the <a href="https://github.com/OpenEdge-Labs/wedge/releases/tag/v0.2.0">GitHub release</a>. Verify them before use (next section).</p>
+<div class="table-wrap">
+<table>
+<caption>Release files by platform</caption>
+<thead><tr><th scope="col">Platform</th><th scope="col">Files</th></tr></thead>
+<tbody>
+<tr><th scope="row">Debian, Ubuntu, Kali</th><td><a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge_0.2.0-1_amd64.deb">amd64 .deb</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge_0.2.0-1_arm64.deb">arm64 .deb</a></td></tr>
+<tr><th scope="row">Fedora, RHEL and compatible</th><td><a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-1.x86_64.rpm">x86_64 .rpm</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-1.aarch64.rpm">aarch64 .rpm</a></td></tr>
+<tr><th scope="row">Other Linux (static, musl)</th><td><a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-x86_64-unknown-linux-musl.tar.gz">x86_64</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-aarch64-unknown-linux-musl.tar.gz">aarch64</a></td></tr>
+<tr><th scope="row">Linux (glibc)</th><td><a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-x86_64-unknown-linux-gnu.tar.gz">x86_64</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-aarch64-unknown-linux-gnu.tar.gz">aarch64</a></td></tr>
+<tr><th scope="row">Windows (x86_64)</th><td><a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-x86_64.msi">Installer (.msi)</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-x86_64-pc-windows-msvc.zip">zip</a></td></tr>
+<tr><th scope="row">macOS (untested)</th><td><a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-aarch64-apple-darwin.tar.gz">Apple silicon</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-x86_64-apple-darwin.tar.gz">Intel</a></td></tr>
+<tr><th scope="row">Container image</th><td><code>ghcr.io/openedge-labs/wedge:0.2.0</code>; OCI archives for <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-oci-amd64.tar">amd64</a> and <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0-oci-arm64.tar">arm64</a></td></tr>
+<tr><th scope="row">Checksums, SBOM, key</th><td><a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/SHA256SUMS">SHA256SUMS</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-0.2.0.cdx.json">CycloneDX SBOM</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases/download/v0.2.0/wedge-release.asc">GPG public key</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="notice"><p>The Windows installer is not yet Authenticode-signed. Until the project's code-signing application is approved, Windows reports an unknown publisher.</p></div>
+
+<h2>How to verify a download</h2>
+<p>Every release file has a Sigstore signature (<code>&lt;file&gt;.sigstore.json</code>) and, except the public key, is listed in <code>SHA256SUMS</code> and has a GitHub build provenance attestation. The .deb and .rpm packages are also GPG-signed.</p>
+<pre><code>sha256sum --ignore-missing -c SHA256SUMS
+gh attestation verify &lt;file&gt; --repo OpenEdge-Labs/wedge
+cosign verify-blob &lt;file&gt; --bundle &lt;file&gt;.sigstore.json &#92;
+  --certificate-identity-regexp '^https://github.com/(OpenEdge-Labs|alinganpatra20004)/wedge/' &#92;
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+<p>Releases after 0.1.1 use the newer Sigstore bundle format; cosign 3 verifies them, and cosign 2.4 or later needs <code>--new-bundle-format</code>. Details, including the GPG fingerprint, are in the <a href="https://github.com/OpenEdge-Labs/wedge/blob/main/SECURITY.md#verifying-downloads">security policy</a>.</p>
+
+<h2>Documentation and source</h2>
+<ul>
+<li><a href="https://github.com/OpenEdge-Labs/wedge/blob/main/docs/install/README.md">Install guides</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/wedge/blob/main/docs/guide/README.md">User guide</a> and <a href="https://github.com/OpenEdge-Labs/wedge/blob/main/docs/guide/configuration-reference.md">configuration reference</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/wedge/blob/main/docs/security/threat-model.md">Threat model</a> and <a href="https://github.com/OpenEdge-Labs/wedge/blob/main/docs/security/verification.md">verification log</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/wedge">Source code</a>, <a href="https://github.com/OpenEdge-Labs/wedge/releases">all releases</a>, <a href="https://github.com/OpenEdge-Labs/wedge/issues">issues</a>, <a href="https://github.com/OpenEdge-Labs/wedge/blob/main/SECURITY.md">security policy</a></li>
+</ul>
+<p>Licence: <a href="https://github.com/OpenEdge-Labs/wedge/blob/main/LICENSE">Apache License 2.0</a>.</p>
+</main>
+<footer class="site">
+<div class="wrap">
+<ul>
+<li><a href="https://github.com/OpenEdge-Labs">GitHub organisation</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/wedge">wEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge">APIEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/website">Source of this site</a></li>
+<li><a href="/.well-known/security.txt">security.txt</a></li>
+</ul>
+<p>Copyright &copy; OpenEdge Labs. Project software is released under the Apache License 2.0. This site's source is Apache-2.0 too.</p>
+<p>OpenEdge Labs is an independent community and is not affiliated with any other organisation. This site sets no cookies, runs no analytics and loads nothing from other sites.</p>
+</div>
+</footer>
+</body>
+</html>

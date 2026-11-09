@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Copyright (c) OpenEdge Labs -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News | OpenEdge Labs</title>
+<meta name="description" content="News from OpenEdge Labs projects: wEdge 0.2.0 released.">
+<link rel="canonical" href="https://openelabs.com/news/">
+<link rel="icon" href="/assets/openedge-labs-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site">
+<div class="wrap">
+<a class="brand" href="/"><img src="/assets/openedge-labs-mark.svg" alt="" width="36" height="36"><span>OpenEdge Labs</span></a>
+<nav class="main" aria-label="Main">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/projects/">Projects</a></li>
+<li><a href="/get-involved/">Get involved</a></li>
+<li><a href="/security/">Security</a></li>
+<li><a href="/news/" aria-current="page">News</a></li>
+<li><a href="/about/">About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main id="content" class="wrap">
+<h1>News</h1>
+<article>
+<h2>wEdge 0.2.0 released</h2>
+<p class="meta"><time datetime="2026-11-03">3 November 2026</time></p>
+<p>wEdge 0.2.0 brings a new Windows installer, an admin page with administrator logins, and the container image on GitHub Packages. The project now lives at <a href="https://github.com/OpenEdge-Labs/wedge">github.com/OpenEdge-Labs/wedge</a>.</p>
+<h3>New Windows installer</h3>
+<ul>
+<li>Asks for the install, web application and configuration folders, the web port, the admin port and an administrator account.</li>
+<li>Finds an older wEdge and offers to upgrade it or to uninstall it and install fresh.</li>
+<li>Adds Start menu shortcuts for service control, configuration editing, the admin page, folders, the user guide and uninstall.</li>
+<li>Checks the choices on each dialog page before installing anything.</li>
+</ul>
+<h3>Admin page and accounts</h3>
+<ul>
+<li>Administrator accounts turn the admin listener into a status page (version, uptime, connections, listeners, virtual hosts, upstream health) with a reload button; every admin request then needs a login.</li>
+<li>Only Argon2id password hashes are stored; five failed logins lock the address out for five minutes.</li>
+</ul>
+<p><a href="https://github.com/OpenEdge-Labs/wedge/releases/tag/v0.2.0">Full release notes and downloads</a> &middot; <a href="/projects/wedge/">wEdge page</a></p>
+</article>
+</main>
+<footer class="site">
+<div class="wrap">
+<ul>
+<li><a href="https://github.com/OpenEdge-Labs">GitHub organisation</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/wedge">wEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/APIEdge">APIEdge</a></li>
+<li><a href="https://github.com/OpenEdge-Labs/website">Source of this site</a></li>
+<li><a href="/.well-known/security.txt">security.txt</a></li>
+</ul>
+<p>Copyright &copy; OpenEdge Labs. Project software is released under the Apache License 2.0. This site's source is Apache-2.0 too.</p>
+<p>OpenEdge Labs is an independent community and is not affiliated with any other organisation. This site sets no cookies, runs no analytics and loads nothing from other sites.</p>
+</div>
+</footer>
+</body>
+</html>

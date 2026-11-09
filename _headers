@@ -11,3 +11,8 @@
 
 /assets/*
   Cache-Control: public, max-age=3600
+
+# The project's pages.dev address serves the same site; keep it out of
+# search results so https://openelabs.online stays the only listed address.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex

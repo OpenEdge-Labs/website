@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://openelabs.com/sitemap.xml
+Sitemap: https://openelabs.online/sitemap.xml

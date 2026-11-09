@@ -1,5 +1,5 @@
 Contact: https://github.com/OpenEdge-Labs/website/security/advisories/new
 Expires: 2027-11-09T00:00:00.000Z
 Preferred-Languages: en
-Canonical: https://openelabs.com/.well-known/security.txt
-Policy: https://openelabs.com/security/
+Canonical: https://openelabs.online/.well-known/security.txt
+Policy: https://openelabs.online/security/

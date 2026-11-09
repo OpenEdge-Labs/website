@@ -2,7 +2,7 @@
 <!-- Copyright (c) OpenEdge Labs -->
 # OpenEdge Labs website
 
-Source of <https://openelabs.com>, the home of the OpenEdge Labs community and its projects, [wEdge](https://github.com/OpenEdge-Labs/wedge) and [APIEdge](https://github.com/OpenEdge-Labs/APIEdge).
+Source of <https://openelabs.online>, the home of the OpenEdge Labs community and its projects, [wEdge](https://github.com/OpenEdge-Labs/wedge) and [APIEdge](https://github.com/OpenEdge-Labs/APIEdge).
 
 Plain HTML and CSS. No build step, no scripts, no cookies, no analytics, no third-party requests; every asset is in this repository. Licence: Apache-2.0 (see `LICENSE`).
 
